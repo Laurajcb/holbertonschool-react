@@ -2,6 +2,8 @@
 import $ from 'jquery';
 // import lodash
 import _ from 'lodash';
+// styles
+import '../css/main.css';
 
 // Here are the <p> and botton instructions to add
 
