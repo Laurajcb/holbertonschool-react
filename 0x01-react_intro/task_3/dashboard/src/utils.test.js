@@ -19,7 +19,5 @@ test("getFooterCopy returns right str if true", () => {
 
 // Test to check if getLatestNotification returns right str
 test("getLatestNotification returns right str", () => {
-  expect(getLatestNotification()).toBe(
-    "<strong>Urgent requirement</strong> - complete by EOD"
-  );
+  expect(getLatestNotification().__html).toBe('<strong>Urgent requirement</strong> - complete by EOD');
 });
