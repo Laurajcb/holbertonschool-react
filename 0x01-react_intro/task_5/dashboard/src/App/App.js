@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import logo from "./logo.jpg";
-import { getFullYear, getFooterCopy } from "./utils";
+import logo from '../assets/logo.jpg';
+import { getFullYear, getFooterCopy } from "../utils/utils";
 
 export default class App extends Component {
   render() {

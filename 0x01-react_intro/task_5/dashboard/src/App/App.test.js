@@ -19,6 +19,6 @@ describe("<App/>", () => {
 
   it('Test if app renders a <div> with a class "App-footer"', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find( ".App-footer").length).toBe(1);
+    expect(wrapper.find(".App-footer").length).toBe(1);
   });
 });
