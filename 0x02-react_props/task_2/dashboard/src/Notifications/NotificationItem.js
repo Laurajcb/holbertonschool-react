@@ -7,5 +7,4 @@ function NotificationItem(props) {
         </li>
     );
 }
-
 export { NotificationItem};

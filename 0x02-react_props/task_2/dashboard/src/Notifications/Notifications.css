@@ -7,10 +7,10 @@
 	padding: 1rem;
 }
 
-[data-priority="default"] {
-	color: blue;
+[data-notification-type='default'] {
+    color: blue;
 }
 
-[data-priority="urgent"] {
-	color: var(--main-color);
+[data-notification-type='urgent'] {
+    color: var(--main-color);
 }
