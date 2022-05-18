@@ -10,23 +10,18 @@ describe('<NotificationItem />', () => {
 		expect(wrapper.exists()).toBe(true);
 	})
 
-	it('Tests that menuItem is rendered when displayDrawer is false', () => {	
-		const wrapper = shallow(<Notifications displayDrawer={false} />);
-		expect(wrapper.find('.menuItem').length).toBe(1);
+	it('Passes dumby `type` prop and checks for correct html rendering', () => {
+		const wrapper = shallow(<NotificationItem type="default" value="test" />);
+		expect(wrapper.find('li').text()).toBe('test');
 	})
 
-	it('Tests the div Notifications is not rendered when displayDrawer is false', () => {
-		const wrapper = shallow(<Notifications displayDrawer={false} />);
-		expect(wrapper.find('.Notifications').length).toBe(0);
+	it('Passes dumby `value` prop and checks for correct html rendering', () => {
+		const wrapper = shallow(<NotificationItem type="default" value="test" />);
+		expect(wrapper.find('li').text()).toBe('test');
 	})
 
-	it('Tests that menuItem is rendered when displayDrawer is true', () => {
-		const wrapper = shallow(<Notifications displayDrawer />);
-		expect(wrapper.find('.menuItem').length).toBe(1);
-	})
-
-	it('Tests that the div Notifications is rendered when displayDrawer is true', () => {
-		const wrapper = shallow(<Notifications displayDrawer />);
-		expect(wrapper.find('.Notifications').length).toBe(1);
+	it('Passes dumby `html` prop and checks for correct html rendering', () => {
+		const wrapper = shallow(<NotificationItem html={{ __html: 'dangerouslySetInnerHtml' }} />);
+		expect(wrapper.html()).toContain('dangerouslySetInnerHtml');
 	})
 })
