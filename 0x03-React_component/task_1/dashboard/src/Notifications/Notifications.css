@@ -25,9 +25,14 @@ li {
 }
 
 ul li[data-notification-type='default'] {
-	color: var(--color-blue);
+	color: blue;
 }
 
 ul li[data-notification-type='urgent'] {
-	color: var(--color-red);
+	color: var(--main-color);
+}
+
+.menuItem {
+	text-align: right;
+	margin-right: 16px;
 }
