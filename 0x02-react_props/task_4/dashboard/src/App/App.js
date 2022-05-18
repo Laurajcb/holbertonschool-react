@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import { Notifications } from "../Notifications/Notifications";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { Login } from "../Login/Login";
-import CourseList from '../CourseList/CourseList';
+import CourseList from "../CourseList/CourseList";
+import propTypes from 'prop-types';
 /* Proptypes */
-import { bool } from 'prop-types';
+import { bool } from "prop-types";
 
-function App({isLoggedIn}) {
+function App({ isLoggedIn }) {
   return (
     <>
       <Notifications />
@@ -20,12 +21,12 @@ function App({isLoggedIn}) {
   );
 }
 
-App.propTypes = {
-  isLoggedIn: bool,
+App.defaultProps = {
+  isLoggedIn: false,
 };
 
-App.defaultProps = {
-  isLoggedIn: true,
+App.propTypes = {
+  isLoggedIn: propTypes.bool,
 };
 
 export default App;
