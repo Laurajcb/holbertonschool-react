@@ -6,6 +6,7 @@ import { Login } from "../Login/Login";
 import { Footer } from "../Footer/Footer";
 import CourseList from "../CourseList/CourseList";
 import { bool } from "prop-types";
+import PropTypes from 'prop-types';
 
 // Implement class Components
 class App extends PureComponent {
