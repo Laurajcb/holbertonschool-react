@@ -26,4 +26,3 @@ describe('Test NotificationItem.js', () => {
 	  done();
 	});
   });
-  
