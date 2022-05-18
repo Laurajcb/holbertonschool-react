@@ -25,9 +25,9 @@ li {
 }
 
 ul li[data-notification-type='default'] {
-	color: blue;
+	color: var(--color-blue);
 }
 
 ul li[data-notification-type='urgent'] {
-	color: var(--main-color);
+	color: var(--color-red);
 }
