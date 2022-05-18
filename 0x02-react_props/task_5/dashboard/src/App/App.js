@@ -6,7 +6,7 @@ import { Login } from "../Login/Login";
 import CourseList from '../CourseList/CourseList';
 import { getLatestNotification } from '../utils/utils';
 import { bool } from 'prop-types';
-/* Proptypes */
+
 function App({isLoggedIn}) {
   const listCourses = [
     { id: 1, name: 'ES6', credit: 60 },
@@ -24,11 +24,8 @@ function App({isLoggedIn}) {
     <>
       <Notifications listNotifications={listNotifications} />
       <div className="App">
-        {/* Header */}
         <Header />
-        {/* Body */}
         {isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login />}
-        {/* Footer */}
         <Footer />
       </div>
     </>
@@ -40,7 +37,7 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  isLoggedIn: true,
+  isLoggedIn: false,
 };
 
 export default App;

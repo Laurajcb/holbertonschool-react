@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { expect } from 'chai';
+import { Login } from '../Login/Login';
 import App from './App';
 
 // shallow render app component
