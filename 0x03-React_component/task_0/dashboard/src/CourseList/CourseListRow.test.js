@@ -31,4 +31,3 @@ describe('Test CourseListRow.js', () => {
     done();
   });
 });
-
