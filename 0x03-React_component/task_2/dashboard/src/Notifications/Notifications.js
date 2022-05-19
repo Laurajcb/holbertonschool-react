@@ -75,7 +75,7 @@ Notifications.defaultProps = {
 
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
-  listNotifications: PropTypes.arrayOf(NotificationItemShape),
+  listNotifications: PropTypes.arrayOf(PropTypes.any),
 };
 
 export { Notifications };

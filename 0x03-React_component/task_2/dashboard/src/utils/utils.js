@@ -12,9 +12,7 @@ function getFooterCopy(isIndex) {
 
 // Function
 function getLatestNotification() {
-    return {
-        __html: '<strong>Urgent requirement</strong> - complete by EOD'
-    }    
+    return ('<strong>Urgent requirement</strong> - complete by EOD' )    
 }
 
 // Export functions

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const NotificationItem = ({ type, value, html, markAsRead, id }) => {
 	// props:
@@ -13,13 +14,13 @@ const NotificationItem = ({ type, value, html, markAsRead, id }) => {
 
 
 NotificationItem.propTypes = {
-	type: propTypes.string,
-	value: propTypes.string,
-	html: propTypes.shape({
-		__html: propTypes.string,
+	type: PropTypes.string,
+	value: PropTypes.string,
+	html: PropTypes.shape({
+		__html: PropTypes.string,
 	}),
-	markAsRead: propTypes.func,
-	id: propTypes.number,
+	markAsRead: PropTypes.func,
+	id: PropTypes.number,
 }
 
 NotificationItem.defaultProps = {
