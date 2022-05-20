@@ -1,5 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
+import { createFileLevelUniqueName } from 'typescript';
 import { NotificationItem } from './NotificationItem';
 
 
@@ -12,17 +13,29 @@ describe('Test NotificationItem.js', () => {
   
 	it('renders three list items', (done) => {
 	  const wrapper = shallow(<NotificationItem type='default' value='test' />);
-  
-	  expect(wrapper.find('li')).to.have.lengthOf(1);
-	  expect(wrapper.find('li').props()).to.have.property('data-notification-type', 'default');
-	  expect(wrapper.find('li').text()).to.equal('test');
+	  expect(wrapper.find('li')).toHaveLength(1);
+	  expect(wrapper.find('li').props()).toHaveProperty('data-notification-type', 'default');
+	  expect(wrapper.find('li').text()).toEqual('test');
 	  done();
 	});
   
-	it(' renders inner HTML', (done) => {
+	it('renders inner HTML', (done) => {
 	  const wrapper = shallow(<NotificationItem html={{ __html: '<u>test</u>' }} />);
-	  expect(wrapper.html()).to.equal('<li><u>test</u></li>');
+	  expect(wrapper.html().indexOf('<li data-notification-type="default"><u>test</u></li>')).not.toBe(-1);
 	  done();
 	});
+  it('check markAsRead gets the rigth args', (done) => {
+    const id = 10;
+    const fakeMarkAsRead = jest.fn();
+
+    const wrapper = shallow(<NotificationItem id={id} markAsRead={fakeMarkAsRead}/>);
+    wrapper.find('li').simulate('click');
+
+    expect(fakeMarkAsRead.mock.calls.length).toBe(1);
+    expect(fakeMarkAsRead).toHaveBeenCalledWith(id);
+    done();
+  });
+
   });
   
+
