@@ -1,10 +1,17 @@
-import { shallow } from 'enzyme';
-import React from 'react';
-import App, { listNotificationsInitialState } from './App';
-import { StyleSheetTestUtils } from 'aphrodite';
-import { user, logOut, AppContext } from './AppContext';
+import { shallow, mount } from "enzyme";
+import React from "react";
+import { App, listNotificationsInitialState, mapStateToProps } from "./App";
+import { StyleSheetTestUtils } from "aphrodite";
+import AppContext, { user, logOut } from "./AppContext";
 
-describe('<App />', () => {
+import { fromJS } from "immutable";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import uiReducer, { initialState } from "../reducers/uiReducer";
+
+const store = createStore(uiReducer, initialState);
+
+describe("<App />", () => {
   beforeAll(() => {
     StyleSheetTestUtils.suppressStyleInjection();
   });
@@ -12,74 +19,49 @@ describe('<App />', () => {
     StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
   });
 
-  it('render without crashing', () => {
+  it("App renders without crashing", () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.exists());
+    expect(wrapper.exists()).toEqual(true);
   });
-
-  it('contain Notifications component', () => {
+  it("should contain the Login component", () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find('Notifications')).toHaveLength(1);
+    expect(wrapper.find("Login")).toHaveLength(1);
   });
 
-  it('contain Header component', () => {
+  it("CourseList is not displayed with isLoggedIn false by default", () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find('Header')).toHaveLength(1);
+    expect(wrapper.find("CourseList")).toHaveLength(0);
   });
 
-  it('contain Login component', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find('Login')).toHaveLength(1);
-  });
+  it("isLoggedIn is true", () => {
+    const wrapper = shallow(<App isLoggedIn={true} />);
 
-  it('contain Footer component', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find('Footer')).toHaveLength(1);
+    expect(wrapper.find("Login")).toHaveLength(0);
+    expect(wrapper.find("CourseList")).toHaveLength(1);
   });
+});
 
-  it('CourseList', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find('CourseList')).toHaveLength(0);
+describe("App Redux", () => {
+  it("mapStateToProps returns the right object from user Login", () => {
+    let state = {
+      ui: fromJS({
+        isUserLoggedIn: true,
+      }),
+    };
+
+    const result = mapStateToProps(state);
+
+    expect(result).toEqual({ isLoggedIn: true });
   });
+  it("mapStateToProps returns the right object from display Drawer", () => {
+    let state = {
+      ui: fromJS({
+        isNotificationDrawerVisible: true,
+      }),
+    };
 
-  it('logOut', () => {
-    const logOut = jest.fn(() => undefined);
-    const wrapper = shallow(<App logOut={logOut} />);
-    expect(wrapper.exists());
-    const alert = jest.spyOn(global, 'alert');
-    expect(alert);
-    expect(logOut);
-    jest.restoreAllMocks();
-  });
+    const result = mapStateToProps(state);
 
-  it('default state for displayDrawer is false', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.state().displayDrawer).toEqual(false);
-  });
-
-  it('displayDrawer toggle handleDisplayDrawer', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.state().displayDrawer).toEqual(false);
-    const instance = wrapper.instance();
-    instance.handleDisplayDrawer();
-    expect(wrapper.state().displayDrawer).toEqual(true);
-  });
-
-  it('displayDrawer toggle handleDisplayDrawer and handleHideDrawer', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.state().displayDrawer).toEqual(false);
-    wrapper.instance().handleDisplayDrawer();
-    expect(wrapper.state().displayDrawer).toEqual(true);
-    wrapper.instance().handleHideDrawer();
-    expect(wrapper.state().displayDrawer).toEqual(false);
-  });
-
-  it('<AppContext.Provider />', () => {
-    const wrapper = shallow(
-      <AppContext.Provider value={{ user, logOut }}>
-        <App />
-      </AppContext.Provider>
-    );
-    expect(wrapper.exists());
+    expect(result).toEqual({ displayDrawer: true });
   });
 });

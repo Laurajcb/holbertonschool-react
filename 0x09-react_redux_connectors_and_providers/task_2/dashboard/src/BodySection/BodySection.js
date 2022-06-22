@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { StyleSheet, css } from 'aphrodite';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { StyleSheet, css } from "aphrodite";
 
 class BodySection extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class BodySection extends Component {
     const { children, title } = this.props;
     return (
       <div className={css(styles.bodySection)}>
-        <h2 className={css(styles.heading)}>{title}</h2>
+        <h2 className={css(styles.bodySectionH2)}>{title}</h2>
         {children}
       </div>
     );
@@ -19,7 +19,7 @@ class BodySection extends Component {
 }
 
 BodySection.defaultProps = {
-  title: '',
+  title: "",
 };
 
 BodySection.propTypes = {
@@ -27,23 +27,24 @@ BodySection.propTypes = {
 };
 
 const screenSize = {
-  small: '@media screen and (max-width: 900px)',
+  small: "@media screen and (max-width: 900px)",
 };
 
 const styles = StyleSheet.create({
   bodySection: {
-    width: '100%',
-    marginTop: '160px',
-    display: 'flex',
-    flexWrap: 'wrap',
-    padding: '32px',
+    display: "flex",
+    flexWrap: "wrap",
+    width: "100%",
     [screenSize.small]: {
-      margin: '240px 0 -240px',
-      padding: '16px',
+      boxSizing: "border-box",
+      paddingLeft: "50px",
+      paddingRight: "50px",
+      paddingBottom: "20px",
     },
   },
-  heading: {
-    width: '100%',
+
+  bodySectionH2: {
+    width: "100%",
   },
 });
 

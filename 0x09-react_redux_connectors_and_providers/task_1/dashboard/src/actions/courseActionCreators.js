@@ -1,4 +1,4 @@
-import { SELECT_COURSE, UNSELECT_COURSE } from './courseActionTypes';
+import { SELECT_COURSE, UNSELECT_COURSE } from "./courseActionTypes";
 
 export const selectCourse = (index) => {
   return {
@@ -6,6 +6,7 @@ export const selectCourse = (index) => {
     index,
   };
 };
+
 export const boundSelectCourse = (index) => dispatch(selectCourse(index));
 
 export const unSelectCourse = (index) => {
@@ -14,4 +15,5 @@ export const unSelectCourse = (index) => {
     index,
   };
 };
+
 export const boundUnSelectCourse = (index) => dispatch(unSelectCourse(index));
