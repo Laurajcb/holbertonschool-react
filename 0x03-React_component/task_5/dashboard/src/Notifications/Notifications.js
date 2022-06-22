@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 import "./Notifications.css";
 import close_icon from "../assets/close-icon.png";
 import { NotificationItem } from "./NotificationItem";
 import { getLatestNotification } from "../utils/utils";
-import NotificationItemShape from "./NotificationItemShape";
-import PropTypes from "prop-types";
+import NotificationItemShape from './NotificationItemShape';
 import { bool } from "prop-types";
 
 class Notifications extends Component {
